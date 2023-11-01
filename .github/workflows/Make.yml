@@ -55,7 +55,7 @@ jobs:
       
     - name: Set variables
       run: |
-        echo "::set-output name=date::$(date +%F)"
+        echo "date=$(date +%F)" >> $GITHUB_OUTPUT
       id: var
       
     - name: Install repo
@@ -70,7 +70,7 @@ jobs:
         PATH=~/bin:$PATH
         mkdir workspace
         cd workspace
-        echo "::set-output name=pwd::$(pwd)"
+        echo "pwd=$(pwd)" >> $GITHUB_OUTPUT"
         git config --global user.name "Hikaru's Action-Build-Bot"
         git config --global user.email "Android@teio.tk"
         repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
